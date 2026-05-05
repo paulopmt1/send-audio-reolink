@@ -2,6 +2,13 @@
 
 Small **Python 3** utility that sends audio (e.g. MP3 from a URL) to a **Reolink** doorbell / camera using **ONVIF RTSP audio backchannel** (the same idea as [go2rtc](https://github.com/AlexxIT/go2rtc)’s two-way audio path: `DESCRIBE` with `Require: www.onvif.org/ver20/backchannel`, Digest auth on every RTSP request, `SETUP` for all SDP tracks, `PLAY`, then **G.711** RTP in **1024-byte** frames over **TCP interleaved** transport).
 
+**Repository:** [github.com/paulopmt1/send-audio-reolink](https://github.com/paulopmt1/send-audio-reolink)
+
+```bash
+git clone git@github.com:paulopmt1/send-audio-reolink.git
+cd send-audio-reolink
+```
+
 ## Requirements
 
 - **Python 3.9+**
@@ -13,7 +20,7 @@ Small **Python 3** utility that sends audio (e.g. MP3 from a URL) to a **Reolink
 ```bash
 python3 send_audio.py \
   --camera 'rtsp://USER:PASSWORD@192.168.1.50:554/Preview_01_sub' \
-  --url 'https://example.com/audio/sample-3s.mp3'
+  --url 'https://samplelib.com/mp3/sample-3s.mp3'
 ```
 
 **Lower latency** (recommended for short clips / doorbell chimes; omits `-re` and uses minimal probing):
@@ -21,14 +28,17 @@ python3 send_audio.py \
 ```bash
 python3 send_audio.py \
   --camera 'rtsp://USER:PASSWORD@192.168.1.50:554/Preview_01_sub' \
-  --url 'https://example.com/audio/sample-3s.mp3' \
+  --url 'https://samplelib.com/mp3/sample-3s.mp3' \
   --low-latency
 ```
 
 **RTSP trace** (stderr):
 
 ```bash
-python3 send_audio.py --camera 'rtsp://...' --url 'https://...' --debug
+python3 send_audio.py \
+  --camera 'rtsp://USER:PASSWORD@192.168.1.50:554/Preview_01_sub' \
+  --url 'https://samplelib.com/mp3/sample-3s.mp3' \
+  --debug
 ```
 
 ### `--camera`
