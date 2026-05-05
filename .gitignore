@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.mp3
+*.wav
+*:Zone.Identifier
+
+# Local copy of upstream go2rtc (not part of this repo)
+go2rtc/
